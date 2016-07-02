@@ -9,15 +9,18 @@
 import Foundation
 import UIKit
 
-class ListPresenter : NSObject, ListInteractorOutput, ListModuleInterface, AddModuleDelegate {
+class ListPresenter : NSObject {
     var listInteractor : ListInteractorInput?
     var listWireframe : ListWireframe?
-    var userInterface : ListViewInterface?
     
-    func updateView() {
-        listInteractor?.findUpcomingItems()
+    var userInterface: ListViewController? {
+        return listWireframe?.listViewController
     }
     
+}
+
+extension ListPresenter: ListInteractorOutput {
+
     func foundUpcomingItems(upcomingItems: [UpcomingItem]) {
         if upcomingItems.count == 0 {
             userInterface?.showNoContentMessage()
@@ -37,10 +40,23 @@ class ListPresenter : NSObject, ListInteractorOutput, ListModuleInterface, AddMo
         return collection.collectedDisplayData()
     }
     
+
+}
+
+extension ListPresenter: ListModuleInterface {
+
+    func updateView() {
+        listInteractor?.findUpcomingItems()
+    }
+
     func addNewEntry() {
         listWireframe?.presentAddInterface()
     }
     
+}
+
+extension ListPresenter: AddModuleDelegate {
+
     func addModuleDidCancelAddAction() {
         // No action necessary
     }
@@ -48,4 +64,13 @@ class ListPresenter : NSObject, ListInteractorOutput, ListModuleInterface, AddMo
     func addModuleDidSaveAddAction() {
         updateView()
     }
+    
+}
+
+extension ListPresenter: Router {
+
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        listWireframe?.prepareForSegue(segue, sender: sender)
+    }
+
 }

@@ -7,10 +7,16 @@
 //
 
 import Foundation
+import Dip
 
 class AddPresenter : NSObject, AddModuleInterface {
-    var addInteractor : AddInteractor?
-    var addWireframe : AddWireframe?
+    
+    private let _addInteractor = Injected<AddInteractor>()
+    var addInteractor : AddInteractor? { return _addInteractor.value }
+    
+    private let _addWireframe = Injected<AddWireframe>()
+    var addWireframe : AddWireframe? { return _addWireframe.value }
+    
     var addModuleDelegate : AddModuleDelegate?
     
     func cancelAddAction() {

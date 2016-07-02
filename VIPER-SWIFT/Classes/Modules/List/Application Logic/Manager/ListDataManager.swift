@@ -10,7 +10,11 @@
 import Foundation
 
 class ListDataManager : NSObject {
-    var coreDataStore : CoreDataStore?
+    let dataStore : DataStore
+    
+    init(dataStore: DataStore) {
+        self.dataStore = dataStore
+    }
 
     func todoItemsBetweenStartDate(startDate: NSDate, endDate: NSDate, completion: (([TodoItem]) -> Void)!) {
         let calendar = NSCalendar.autoupdatingCurrentCalendar()
@@ -20,22 +24,9 @@ class ListDataManager : NSObject {
         let predicate = NSPredicate(format: "(date >= %@) AND (date <= %@)", beginning, end)
         let sortDescriptors: [NSSortDescriptor] = []
         
-        coreDataStore?.fetchEntriesWithPredicate(predicate,
+        dataStore.fetchEntriesWithPredicate(predicate,
             sortDescriptors: sortDescriptors,
-            completionBlock: { entries in
-                let todoItems = self.todoItemsFromDataStoreEntries(entries)
-                completion(todoItems)
-        })
+            completionBlock: completion)
     }
     
-    func todoItemsFromDataStoreEntries(entries: [ManagedTodoItem]) -> [TodoItem] {
-        var todoItems : [TodoItem] = []
-        
-        for managedTodoItem in entries {
-            let todoItem = TodoItem(dueDate: managedTodoItem.date, name: managedTodoItem.name as String)
-            todoItems.append(todoItem)
-        }
-        
-        return todoItems
-    }
 }

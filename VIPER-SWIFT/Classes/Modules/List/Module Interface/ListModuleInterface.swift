@@ -7,6 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+protocol Router {
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+}
 
 protocol ListModuleInterface {
     func addNewEntry()

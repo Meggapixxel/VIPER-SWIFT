@@ -7,16 +7,15 @@
 //
 
 import UIKit
+import Dip
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
     
-    let appDependencies = AppDependencies()
-
+    let container = DependencyContainer(configBlock: configureContainer)
+    
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
-        appDependencies.installRootViewControllerIntoWindow(window!)
-        
         return true
     }
 }

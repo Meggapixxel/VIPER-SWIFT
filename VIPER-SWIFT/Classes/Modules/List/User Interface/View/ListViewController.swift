@@ -13,6 +13,7 @@ var ListEntryCellIdentifier = "ListEntryCell"
 
 class ListViewController : UITableViewController, ListViewInterface {
     var eventHandler : ListModuleInterface?
+    var router: Router?
     var dataProperty : UpcomingDisplayData?
     var strongTableView : UITableView?
     
@@ -90,5 +91,9 @@ class ListViewController : UITableViewController, ListViewInterface {
         cell.selectionStyle = UITableViewCellSelectionStyle.None;
 
         return cell
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        router?.prepareForSegue(segue, sender: sender)
     }
 }

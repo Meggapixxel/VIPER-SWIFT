@@ -10,12 +10,11 @@ import XCTest
 
 class DataTests: XCTestCase {
     var dataStore = CoreDataStore()
-    var dataManager = ListDataManager()
+    var dataManager: ListDataManager!
 
     override func setUp() {
         super.setUp()
-        
-        dataManager.coreDataStore = dataStore
+        dataManager = ListDataManager(dataStore: dataStore)
     }
     
     func testPerformance() {

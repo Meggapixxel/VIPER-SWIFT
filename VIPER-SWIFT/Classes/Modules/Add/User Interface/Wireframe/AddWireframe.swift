@@ -13,35 +13,30 @@ let AddViewControllerIdentifier = "AddViewController"
 
 class AddWireframe : NSObject, UIViewControllerTransitioningDelegate {
 
-    var addPresenter : AddPresenter?
+    let addPresenter : AddPresenter
     var presentedViewController : UIViewController?
     
-    func presentAddInterfaceFromViewController(viewController: UIViewController) {
-        let newViewController = addViewController()
-        newViewController.eventHandler = addPresenter
+    init(addPresenter: AddPresenter) {
+        self.addPresenter = addPresenter
+    }
+    
+    func prepareForSegue(segue: UIStoryboardSegue) -> Bool {
+        guard segue.identifier == "add" else { return false }
+
+        let newViewController = segue.destinationViewController as! AddViewController
         newViewController.modalPresentationStyle = .Custom
         newViewController.transitioningDelegate = self
-        
-        addPresenter?.configureUserInterfaceForPresentation(newViewController)
-        
-        viewController.presentViewController(newViewController, animated: true, completion: nil)
+        newViewController.eventHandler = addPresenter
+
+        addPresenter.configureUserInterfaceForPresentation(newViewController)
         
         presentedViewController = newViewController
+        return true
     }
     
     func dismissAddInterface() {
         presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
-    }
-    
-    func addViewController() -> AddViewController {
-        let storyboard = mainStoryboard()
-        let addViewController: AddViewController = storyboard.instantiateViewControllerWithIdentifier(AddViewControllerIdentifier) as! AddViewController
-        return addViewController
-    }
-    
-    func mainStoryboard() -> UIStoryboard {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        return storyboard
+        presentedViewController = nil
     }
     
     func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {

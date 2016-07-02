@@ -8,36 +8,30 @@
 
 import Foundation
 import UIKit
+import Dip
 
 let ListViewControllerIdentifier = "ListViewController"
 
 class ListWireframe : NSObject {
-    var addWireframe : AddWireframe?
-    var listPresenter : ListPresenter?
-    var rootWireframe : RootWireframe?
-    var listViewController : ListViewController?
+    let addWireframe : AddWireframe
+    let listPresenter : ListPresenter
+    let rootWireframe : RootWireframe
+
+    private let _listViewController = InjectedWeak<ListViewController>(tag: ListViewControllerIdentifier)
+    var listViewController : ListViewController? { return _listViewController.value }
     
-    func presentListInterfaceFromWindow(window: UIWindow) {
-        let viewController = listViewControllerFromStoryboard()
-        viewController.eventHandler = listPresenter
-        listViewController = viewController
-        listPresenter!.userInterface = viewController
-        rootWireframe?.showRootViewController(viewController, inWindow: window)
+    init(rootWireframe: RootWireframe, addWireframe: AddWireframe, listPresenter: ListPresenter) {
+        self.rootWireframe = rootWireframe
+        self.addWireframe = addWireframe
+        self.listPresenter = listPresenter
     }
     
     func presentAddInterface() {
-        addWireframe?.presentAddInterfaceFromViewController(listViewController!)
+        listViewController?.performSegueWithIdentifier("add", sender: nil)
     }
     
-    func listViewControllerFromStoryboard() -> ListViewController {
-        let storyboard = mainStoryboard()
-        let viewController = storyboard.instantiateViewControllerWithIdentifier(ListViewControllerIdentifier) as! ListViewController
-        return viewController
-    }
-    
-    func mainStoryboard() -> UIStoryboard {
-        let storyboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-        return storyboard
+    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        addWireframe.prepareForSegue(segue)
     }
     
 }

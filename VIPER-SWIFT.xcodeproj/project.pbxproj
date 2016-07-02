@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09DD5A011CE73DE5000FE79F /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DD59FF1CE73DE5000FE79F /* Dip.framework */; };
+		09DD5A021CE73DE5000FE79F /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DD5A001CE73DE5000FE79F /* DipUI.framework */; };
 		261FA1B919414A720029F589 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17219414A720029F589 /* AppDependencies.swift */; };
 		261FA1BC19414A720029F589 /* NSCalendar+CalendarAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17919414A720029F589 /* NSCalendar+CalendarAdditions.swift */; };
 		261FA1BE19414A720029F589 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17D19414A720029F589 /* Clock.swift */; };
@@ -75,6 +77,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		09DD59FF1CE73DE5000FE79F /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
+		09DD5A001CE73DE5000FE79F /* DipUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DipUI.framework; path = Carthage/Build/iOS/DipUI.framework; sourceTree = "<group>"; };
 		261FA14E1941497E0029F589 /* VIPER-SWIFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER-SWIFT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1601941497E0029F589 /* VIPER-SWIFTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VIPER-SWIFTTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1651941497E0029F589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -125,6 +129,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				09DD5A021CE73DE5000FE79F /* DipUI.framework in Frameworks */,
+				09DD5A011CE73DE5000FE79F /* Dip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -141,6 +147,8 @@
 		261FA1451941497E0029F589 = {
 			isa = PBXGroup;
 			children = (
+				09DD59FF1CE73DE5000FE79F /* Dip.framework */,
+				09DD5A001CE73DE5000FE79F /* DipUI.framework */,
 				261FA1501941497E0029F589 /* VIPER-SWIFT */,
 				261FA1631941497E0029F589 /* VIPER-SWIFTTests */,
 				261FA14F1941497E0029F589 /* Products */,
@@ -391,7 +399,6 @@
 			children = (
 				261FA1A419414A720029F589 /* ListInteractor.swift */,
 				261FA1A519414A720029F589 /* ListInteractorIO.swift */,
-				261FA1A619414A720029F589 /* UpcomingItem.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -407,6 +414,7 @@
 		261FA1A919414A720029F589 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				261FA1A619414A720029F589 /* UpcomingItem.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -486,6 +494,7 @@
 				261FA14A1941497E0029F589 /* Sources */,
 				261FA14B1941497E0029F589 /* Frameworks */,
 				261FA14C1941497E0029F589 /* Resources */,
+				09DD59FE1CE73D2B000FE79F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -573,6 +582,24 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		09DD59FE1CE73D2B000FE79F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/DipUI.framework",
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/usr/local/bin/carthage copy-frameworks";
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		261FA14A1941497E0029F589 /* Sources */ = {
@@ -745,7 +772,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "VIPER-SWIFT/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mutualmobile.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -757,7 +789,12 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "VIPER-SWIFT/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.mutualmobile.${PRODUCT_NAME:rfc1034identifier}";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -768,7 +805,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VIPER-SWIFT.app/VIPER-SWIFT";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
 					"$(inherited)",
@@ -786,7 +826,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VIPER-SWIFT.app/VIPER-SWIFT";
-				FRAMEWORK_SEARCH_PATHS = "$(inherited)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = "VIPER-SWIFTTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				METAL_ENABLE_DEBUG_INFO = NO;

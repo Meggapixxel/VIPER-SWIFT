@@ -9,7 +9,13 @@
 import Foundation
 import CoreData
 
-class CoreDataStore : NSObject {
+protocol DataStore {
+    func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!)
+    func newTodoItem(entiry: TodoItem)
+    func save()
+}
+
+class CoreDataStore : NSObject, DataStore {
     var persistentStoreCoordinator : NSPersistentStoreCoordinator!
     var managedObjectModel : NSManagedObjectModel!
     var managedObjectContext : NSManagedObjectContext!
@@ -36,7 +42,7 @@ class CoreDataStore : NSObject {
         super.init()
     }
     
-    func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([ManagedTodoItem]) -> Void)!) {
+    func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!) {
         let fetchRequest = NSFetchRequest(entityName: "TodoItem")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = sortDescriptors
@@ -44,14 +50,14 @@ class CoreDataStore : NSObject {
         managedObjectContext.performBlock {
             let queryResults = try? self.managedObjectContext.executeFetchRequest(fetchRequest)
             let managedResults = queryResults! as! [ManagedTodoItem]
-            completionBlock(managedResults)
+            completionBlock(managedResults.map(self.todoItemFromDataStoreEntry))
         }
     }
     
-    func newTodoItem() -> ManagedTodoItem {
+    func newTodoItem(entry: TodoItem) {
         let newEntry = NSEntityDescription.insertNewObjectForEntityForName("TodoItem", inManagedObjectContext: managedObjectContext) as! ManagedTodoItem
-        
-        return newEntry
+        newEntry.name = entry.name
+        newEntry.date = entry.dueDate
     }
     
     func save() {
@@ -60,4 +66,9 @@ class CoreDataStore : NSObject {
         } catch _ {
         }
     }
+    
+    func todoItemFromDataStoreEntry(entry: ManagedTodoItem) -> TodoItem {
+        return TodoItem(dueDate: entry.date, name: entry.name as String)
+    }
+    
 }

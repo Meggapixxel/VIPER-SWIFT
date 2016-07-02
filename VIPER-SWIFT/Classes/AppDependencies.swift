@@ -8,51 +8,56 @@
 
 import Foundation
 import UIKit
+import DipUI
 
-class AppDependencies {
-    var listWireframe = ListWireframe()
+func configureContainer(container: DependencyContainer) {
+    DependencyContainer.uiContainer = container
     
-    init() {
-        configureDependencies()
+    container.register(.Singleton) { CoreDataStore() as DataStore }
+    container.register(.Singleton) { DeviceClock() as Clock }
+    container.register(.Singleton) { RootWireframe() }
+    
+    //List module
+    container.register(.ObjectGraph) { ListDataManager(dataStore: $0) }
+    
+    let interactor = container.register(.ObjectGraph) { ListInteractor(dataManager: $0, clock: $1) }
+        .resolveDependencies { container, interactor in
+            interactor.output = try container.resolve()
     }
     
-    func installRootViewControllerIntoWindow(window: UIWindow) {
-        listWireframe.presentListInterfaceFromWindow(window)
+    container.register(interactor, type: ListInteractorInput.self)
+    
+    container.register(.Singleton) { ListWireframe(rootWireframe: $0, addWireframe: $1, listPresenter: $2) }
+    
+    let presenter = container.register(.ObjectGraph) { ListPresenter() }
+        .resolveDependencies { container, presenter in
+            presenter.listInteractor = try container.resolve()
+            presenter.listWireframe = try container.resolve()
     }
     
-    func configureDependencies() {
-        let coreDataStore = CoreDataStore()
-        let clock = DeviceClock()
-        let rootWireframe = RootWireframe()
-        
-        let listPresenter = ListPresenter()
-        let listDataManager = ListDataManager()
-        let listInteractor = ListInteractor(dataManager: listDataManager, clock: clock)
-        
-        let addWireframe = AddWireframe()
-        let addInteractor = AddInteractor()
-        let addPresenter = AddPresenter()
-        let addDataManager = AddDataManager()
-        
-        listInteractor.output = listPresenter
-        
-        listPresenter.listInteractor = listInteractor
-        listPresenter.listWireframe = listWireframe
-        
-        listWireframe.addWireframe = addWireframe
-        listWireframe.listPresenter = listPresenter
-        listWireframe.rootWireframe = rootWireframe
-        
-        listDataManager.coreDataStore = coreDataStore
-        
-        addInteractor.addDataManager = addDataManager
-        
-        addWireframe.addPresenter = addPresenter
-        
-        addPresenter.addWireframe = addWireframe
-        addPresenter.addModuleDelegate = listPresenter
-        addPresenter.addInteractor = addInteractor
-        
-        addDataManager.dataStore = coreDataStore
+    container.register(presenter, type: ListInteractorOutput.self)
+    container.register(presenter, type: ListModuleInterface.self)
+    container.register(presenter, type: AddModuleDelegate.self)
+    container.register(presenter, type: Router.self)
+    
+    container.register(tag: "ListViewController", .ObjectGraph) { ListViewController() }
+        .resolveDependencies { container, controller in
+            controller.eventHandler = try container.resolve()
+            controller.router = try container.resolve()
     }
+
+    //Add module
+    container.register(.ObjectGraph) { AddDataManager(dataStore: $0) }
+    container.register(.ObjectGraph) { AddInteractor(addDataManager: $0) }
+    container.register(.Singleton) { AddWireframe(addPresenter: $0) }
+
+    container.register(.ObjectGraph) { AddPresenter() }
+        .resolveDependencies { container, presenter in
+            presenter.addModuleDelegate = try container.resolve()
+    }
+    
+    container.register(tag: "AddViewController", .ObjectGraph) { AddViewController() }
 }
+
+extension ListViewController: StoryboardInstantiatable {}
+extension AddViewController: StoryboardInstantiatable {}
