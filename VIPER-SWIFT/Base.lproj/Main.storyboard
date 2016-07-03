@@ -166,7 +166,7 @@
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
                     <size key="freeformSize" width="260" height="360"/>
                     <userDefinedRuntimeAttributes>
-                        <userDefinedRuntimeAttribute type="string" keyPath="dipTag" value="AddViewController"/>
+                        <userDefinedRuntimeAttribute type="nil" keyPath="dipTag"/>
                     </userDefinedRuntimeAttributes>
                     <connections>
                         <outlet property="datePicker" destination="gW8-Uc-U23" id="Vhx-3Y-GeD"/>

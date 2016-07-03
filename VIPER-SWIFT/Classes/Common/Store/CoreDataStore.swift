@@ -21,6 +21,7 @@ class CoreDataStore : NSObject, DataStore {
     var managedObjectContext : NSManagedObjectContext!
     
     override init() {
+        print("creating \(self.dynamicType)")
         managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
         
         persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
@@ -41,6 +42,10 @@ class CoreDataStore : NSObject, DataStore {
         
         super.init()
     }
+    deinit {
+        print("deinit \(self.dynamicType)")
+    }
+
     
     func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!) {
         let fetchRequest = NSFetchRequest(entityName: "TodoItem")

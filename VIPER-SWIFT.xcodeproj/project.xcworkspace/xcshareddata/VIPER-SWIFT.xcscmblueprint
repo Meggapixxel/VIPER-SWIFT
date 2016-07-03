@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "BDAE23EECE98BF6BEBC5917E28E642E9B9996D2B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "4AD730526D14F906A3B43C5120863238E0E8EC1B" : 0,
+    "BDAE23EECE98BF6BEBC5917E28E642E9B9996D2B" : 0,
+    "178954EAFD2E45C2EF6E3D9864EDB68CE3221036" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "C7B4CB9B-4CC6-4362-9507-E1712FE71D3B",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "4AD730526D14F906A3B43C5120863238E0E8EC1B" : "Dip-UI\/",
+    "BDAE23EECE98BF6BEBC5917E28E642E9B9996D2B" : "VIPER-SWIFT\/",
+    "178954EAFD2E45C2EF6E3D9864EDB68CE3221036" : "Dip\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "VIPER-SWIFT",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "VIPER-SWIFT.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:AliSoftware\/Dip.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "178954EAFD2E45C2EF6E3D9864EDB68CE3221036"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ilyapuchka\/Dip-UI.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "4AD730526D14F906A3B43C5120863238E0E8EC1B"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:ilyapuchka\/VIPER-SWIFT.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "BDAE23EECE98BF6BEBC5917E28E642E9B9996D2B"
+    }
+  ]
+}

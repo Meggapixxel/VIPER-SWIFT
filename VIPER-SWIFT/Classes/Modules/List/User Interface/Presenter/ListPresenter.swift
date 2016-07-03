@@ -11,12 +11,8 @@ import UIKit
 
 class ListPresenter : NSObject {
     var listInteractor : ListInteractorInput?
-    var listWireframe : ListWireframe?
-    
-    var userInterface: ListViewController? {
-        return listWireframe?.listViewController
-    }
-    
+    weak var listWireframe : ListWireframe?
+    weak var userInterface: ListViewInterface?
 }
 
 extension ListPresenter: ListInteractorOutput {
@@ -65,12 +61,4 @@ extension ListPresenter: AddModuleDelegate {
         updateView()
     }
     
-}
-
-extension ListPresenter: Router {
-
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        listWireframe?.prepareForSegue(segue, sender: sender)
-    }
-
 }

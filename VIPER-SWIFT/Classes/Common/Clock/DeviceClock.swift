@@ -9,6 +9,13 @@
 import Foundation
 
 class DeviceClock : NSObject, Clock {
+    override init() {
+        print("creating \(self.dynamicType)")
+    }
+    deinit {
+        print("deinit \(self.dynamicType)")
+    }
+
     func today() -> NSDate {
         return NSDate()
     }

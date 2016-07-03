@@ -13,7 +13,7 @@ protocol Router {
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
 }
 
-protocol ListModuleInterface {
+protocol ListModuleInterface: class {
     func addNewEntry()
     func updateView()
 }

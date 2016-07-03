@@ -12,17 +12,13 @@ import Dip
 
 let ListViewControllerIdentifier = "ListViewController"
 
-class ListWireframe : NSObject {
-    let addWireframe : AddWireframe
+class ListWireframe : NSObject, Router {
+    var addWireframe : AddWireframe?
     let listPresenter : ListPresenter
-    let rootWireframe : RootWireframe
 
-    private let _listViewController = InjectedWeak<ListViewController>(tag: ListViewControllerIdentifier)
-    var listViewController : ListViewController? { return _listViewController.value }
+    weak var listViewController : ListViewController?
     
-    init(rootWireframe: RootWireframe, addWireframe: AddWireframe, listPresenter: ListPresenter) {
-        self.rootWireframe = rootWireframe
-        self.addWireframe = addWireframe
+    init(listPresenter: ListPresenter) {
         self.listPresenter = listPresenter
     }
     
@@ -31,7 +27,7 @@ class ListWireframe : NSObject {
     }
     
     func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        addWireframe.prepareForSegue(segue)
+        addWireframe?.prepareForSegue(segue)
     }
     
 }

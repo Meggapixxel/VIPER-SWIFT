@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol AddModuleDelegate {
+protocol AddModuleDelegate: class {
     func addModuleDidCancelAddAction()
     func addModuleDidSaveAddAction()
 }

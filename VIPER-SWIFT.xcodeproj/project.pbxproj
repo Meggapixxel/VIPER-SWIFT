@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		09DD5A011CE73DE5000FE79F /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DD59FF1CE73DE5000FE79F /* Dip.framework */; };
-		09DD5A021CE73DE5000FE79F /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 09DD5A001CE73DE5000FE79F /* DipUI.framework */; };
+		093229511D403543004C0A98 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0932294F1D403543004C0A98 /* Dip.framework */; };
+		093229521D403543004C0A98 /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093229501D403543004C0A98 /* DipUI.framework */; };
 		261FA1B919414A720029F589 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17219414A720029F589 /* AppDependencies.swift */; };
 		261FA1BC19414A720029F589 /* NSCalendar+CalendarAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17919414A720029F589 /* NSCalendar+CalendarAdditions.swift */; };
 		261FA1BE19414A720029F589 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17D19414A720029F589 /* Clock.swift */; };
@@ -17,7 +17,6 @@
 		261FA1C119414A720029F589 /* TodoItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA18119414A720029F589 /* TodoItem.swift */; };
 		261FA1C219414A720029F589 /* CoreDataStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA18319414A720029F589 /* CoreDataStore.swift */; };
 		261FA1C419414A720029F589 /* TODO.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 261FA18719414A720029F589 /* TODO.xcdatamodeld */; };
-		261FA1C519414A720029F589 /* RootWireframe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA18A19414A720029F589 /* RootWireframe.swift */; };
 		261FA1C619414A720029F589 /* AddInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA18F19414A720029F589 /* AddInteractor.swift */; };
 		261FA1C719414A720029F589 /* AddDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA19119414A720029F589 /* AddDataManager.swift */; };
 		261FA1C819414A720029F589 /* AddModuleDelegateInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA19419414A720029F589 /* AddModuleDelegateInterface.swift */; };
@@ -77,8 +76,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		09DD59FF1CE73DE5000FE79F /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
-		09DD5A001CE73DE5000FE79F /* DipUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DipUI.framework; path = Carthage/Build/iOS/DipUI.framework; sourceTree = "<group>"; };
+		0932294F1D403543004C0A98 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
+		093229501D403543004C0A98 /* DipUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DipUI.framework; path = Carthage/Build/iOS/DipUI.framework; sourceTree = "<group>"; };
 		261FA14E1941497E0029F589 /* VIPER-SWIFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER-SWIFT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1601941497E0029F589 /* VIPER-SWIFTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VIPER-SWIFTTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1651941497E0029F589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -90,7 +89,6 @@
 		261FA18119414A720029F589 /* TodoItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TodoItem.swift; sourceTree = "<group>"; };
 		261FA18319414A720029F589 /* CoreDataStore.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CoreDataStore.swift; sourceTree = "<group>"; };
 		261FA18819414A720029F589 /* TODO.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = TODO.xcdatamodel; sourceTree = "<group>"; };
-		261FA18A19414A720029F589 /* RootWireframe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootWireframe.swift; sourceTree = "<group>"; };
 		261FA18F19414A720029F589 /* AddInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddInteractor.swift; sourceTree = "<group>"; };
 		261FA19119414A720029F589 /* AddDataManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddDataManager.swift; sourceTree = "<group>"; };
 		261FA19419414A720029F589 /* AddModuleDelegateInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddModuleDelegateInterface.swift; sourceTree = "<group>"; };
@@ -129,8 +127,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				09DD5A021CE73DE5000FE79F /* DipUI.framework in Frameworks */,
-				09DD5A011CE73DE5000FE79F /* Dip.framework in Frameworks */,
+				093229521D403543004C0A98 /* DipUI.framework in Frameworks */,
+				093229511D403543004C0A98 /* Dip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,8 +145,8 @@
 		261FA1451941497E0029F589 = {
 			isa = PBXGroup;
 			children = (
-				09DD59FF1CE73DE5000FE79F /* Dip.framework */,
-				09DD5A001CE73DE5000FE79F /* DipUI.framework */,
+				0932294F1D403543004C0A98 /* Dip.framework */,
+				093229501D403543004C0A98 /* DipUI.framework */,
 				261FA1501941497E0029F589 /* VIPER-SWIFT */,
 				261FA1631941497E0029F589 /* VIPER-SWIFTTests */,
 				261FA14F1941497E0029F589 /* Products */,
@@ -211,7 +209,6 @@
 				261FA17C19414A720029F589 /* Clock */,
 				261FA17F19414A720029F589 /* Model */,
 				261FA18219414A720029F589 /* Store */,
-				261FA18919414A720029F589 /* View */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -258,14 +255,6 @@
 				261FA1E619414CBE0029F589 /* ManagedTodoItem.swift */,
 			);
 			path = Entities;
-			sourceTree = "<group>";
-		};
-		261FA18919414A720029F589 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				261FA18A19414A720029F589 /* RootWireframe.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		261FA18B19414A720029F589 /* Modules */ = {
@@ -590,8 +579,8 @@
 			files = (
 			);
 			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
 				"$(SRCROOT)/Carthage/Build/iOS/DipUI.framework",
+				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
 			);
 			outputPaths = (
 			);
@@ -620,7 +609,6 @@
 				261FA1BF19414A720029F589 /* DeviceClock.swift in Sources */,
 				261FA1DA19414A720029F589 /* ListViewController.swift in Sources */,
 				261FA1BE19414A720029F589 /* Clock.swift in Sources */,
-				261FA1C519414A720029F589 /* RootWireframe.swift in Sources */,
 				261FA1C419414A720029F589 /* TODO.xcdatamodeld in Sources */,
 				261FA1CD19414A720029F589 /* AddViewController.swift in Sources */,
 				261FA1C119414A720029F589 /* TodoItem.swift in Sources */,

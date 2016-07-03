@@ -9,7 +9,7 @@
 import Foundation
 
 class ListInteractor : NSObject, ListInteractorInput {
-    var output : ListInteractorOutput?
+    weak var output : ListInteractorOutput?
     
     let clock : Clock
     let dataManager : ListDataManager
@@ -18,7 +18,7 @@ class ListInteractor : NSObject, ListInteractorInput {
         self.dataManager = dataManager
         self.clock = clock
     }
-    
+
     func findUpcomingItems() {
         let today = clock.today()
         let endOfNextWeek = NSCalendar.currentCalendar().dateForEndOfFollowingWeekWithDate(today)

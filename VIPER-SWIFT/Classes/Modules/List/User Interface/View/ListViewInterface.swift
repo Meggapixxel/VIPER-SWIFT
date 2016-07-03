@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol ListViewInterface {
+protocol ListViewInterface: class {
     func showNoContentMessage()
     func showUpcomingDisplayData(data: UpcomingDisplayData)
     func reloadEntries ()

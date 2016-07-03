@@ -26,11 +26,10 @@ class AddWireframe : NSObject, UIViewControllerTransitioningDelegate {
         let newViewController = segue.destinationViewController as! AddViewController
         newViewController.modalPresentationStyle = .Custom
         newViewController.transitioningDelegate = self
-        newViewController.eventHandler = addPresenter
 
-        addPresenter.configureUserInterfaceForPresentation(newViewController)
-        
         presentedViewController = newViewController
+        addPresenter.configureUserInterfaceForPresentation(newViewController)
+
         return true
     }
     
@@ -43,7 +42,7 @@ class AddWireframe : NSObject, UIViewControllerTransitioningDelegate {
         return AddDismissalTransition()
     }
     
-   func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AddPresentationTransition()
     }
 }

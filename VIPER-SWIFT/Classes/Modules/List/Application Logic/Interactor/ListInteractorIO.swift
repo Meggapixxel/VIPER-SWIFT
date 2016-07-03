@@ -13,6 +13,6 @@ protocol ListInteractorInput {
     func findUpcomingItems()
 }
 
-protocol ListInteractorOutput {
+protocol ListInteractorOutput: class {
     func foundUpcomingItems(upcomingItems: [UpcomingItem])
 }

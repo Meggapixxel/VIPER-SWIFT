@@ -8,9 +8,12 @@
 
 import Foundation
 import UIKit
+import Dip
 
 class AddViewController: UIViewController, UITextFieldDelegate, AddViewInterface {
-    var eventHandler : AddModuleInterface?
+    
+    private let _eventHandler = InjectedWeak<AddModuleInterface>()
+    var eventHandler : AddModuleInterface? { return _eventHandler.value }
 
     @IBOutlet var nameTextField : UITextField!
     @IBOutlet var datePicker : UIDatePicker!
