@@ -20,11 +20,11 @@ class AddWireframe : NSObject, UIViewControllerTransitioningDelegate {
         self.addPresenter = addPresenter
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue) -> Bool {
+    func prepareForSegue(_ segue: UIStoryboardSegue) -> Bool {
         guard segue.identifier == "add" else { return false }
 
-        let newViewController = segue.destinationViewController as! AddViewController
-        newViewController.modalPresentationStyle = .Custom
+        let newViewController = segue.destination as! AddViewController
+        newViewController.modalPresentationStyle = .custom
         newViewController.transitioningDelegate = self
 
         presentedViewController = newViewController
@@ -34,15 +34,15 @@ class AddWireframe : NSObject, UIViewControllerTransitioningDelegate {
     }
     
     func dismissAddInterface() {
-        presentedViewController?.dismissViewControllerAnimated(true, completion: nil)
+        presentedViewController?.dismiss(animated: true, completion: nil)
         presentedViewController = nil
     }
     
-    func animationControllerForDismissedController(dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forDismissed dismissed: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AddDismissalTransition()
     }
     
-    func animationControllerForPresentedController(presented: UIViewController, presentingController presenting: UIViewController, sourceController source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
+    func animationController(forPresented presented: UIViewController, presenting: UIViewController, source: UIViewController) -> UIViewControllerAnimatedTransitioning? {
         return AddPresentationTransition()
     }
 }

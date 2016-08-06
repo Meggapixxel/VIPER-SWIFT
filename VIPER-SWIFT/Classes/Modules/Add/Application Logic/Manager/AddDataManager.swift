@@ -15,7 +15,7 @@ class AddDataManager : NSObject {
         self.dataStore = dataStore
     }
     
-    func addNewEntry(entry: TodoItem) {
+    func addNewEntry(_ entry: TodoItem) {
         dataStore.newTodoItem(entry)
         dataStore.save()
     }

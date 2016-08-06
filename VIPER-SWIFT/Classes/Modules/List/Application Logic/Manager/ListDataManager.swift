@@ -16,8 +16,8 @@ class ListDataManager : NSObject {
         self.dataStore = dataStore
     }
 
-    func todoItemsBetweenStartDate(startDate: NSDate, endDate: NSDate, completion: (([TodoItem]) -> Void)!) {
-        let calendar = NSCalendar.autoupdatingCurrentCalendar()
+    func todoItemsBetweenStartDate(_ startDate: Date, endDate: Date, completion: (([TodoItem]) -> Void)!) {
+        let calendar = Calendar.autoupdatingCurrent
         let beginning = calendar.dateForBeginningOfDay(startDate)
         let end = calendar.dateForEndOfDay(endDate)
         

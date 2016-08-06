@@ -23,11 +23,11 @@ class ListWireframe : NSObject, Router {
     }
     
     func presentAddInterface() {
-        listViewController?.performSegueWithIdentifier("add", sender: nil)
+        listViewController?.performSegue(withIdentifier: "add", sender: nil)
     }
     
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        addWireframe?.prepareForSegue(segue)
+    func prepareForSegue(_ segue: UIStoryboardSegue, sender: AnyObject?) {
+        let _ = addWireframe?.prepareForSegue(segue)
     }
     
 }

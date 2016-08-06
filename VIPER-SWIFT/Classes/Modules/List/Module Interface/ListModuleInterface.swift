@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 protocol Router {
-    func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    func prepareForSegue(_ segue: UIStoryboardSegue, sender: AnyObject?)
 }
 
 protocol ListModuleInterface: class {

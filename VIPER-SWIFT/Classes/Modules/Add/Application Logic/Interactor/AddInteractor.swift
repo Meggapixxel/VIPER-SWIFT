@@ -15,7 +15,7 @@ class AddInteractor : NSObject {
         self.addDataManager = addDataManager
     }
     
-    func saveNewEntryWithName(name: String, dueDate: NSDate) {
+    func saveNewEntryWithName(_ name: String, dueDate: Date) {
         let newEntry = TodoItem(dueDate: dueDate, name: name)
         addDataManager.addNewEntry(newEntry)
     }

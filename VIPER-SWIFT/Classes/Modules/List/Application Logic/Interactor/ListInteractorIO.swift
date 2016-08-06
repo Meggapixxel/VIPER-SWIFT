@@ -14,5 +14,5 @@ protocol ListInteractorInput {
 }
 
 protocol ListInteractorOutput: class {
-    func foundUpcomingItems(upcomingItems: [UpcomingItem])
+    func foundUpcomingItems(_ upcomingItems: [UpcomingItem])
 }

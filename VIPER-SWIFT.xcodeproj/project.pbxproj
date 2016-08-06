@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		093229511D403543004C0A98 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0932294F1D403543004C0A98 /* Dip.framework */; };
-		093229521D403543004C0A98 /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093229501D403543004C0A98 /* DipUI.framework */; };
+		0915B7E71D566D87004A71E7 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0915B7DE1D566D66004A71E7 /* Dip.framework */; };
+		0915B7E81D566D87004A71E7 /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0915B7C81D566D54004A71E7 /* DipUI.framework */; };
 		261FA1B919414A720029F589 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17219414A720029F589 /* AppDependencies.swift */; };
 		261FA1BC19414A720029F589 /* NSCalendar+CalendarAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17919414A720029F589 /* NSCalendar+CalendarAdditions.swift */; };
 		261FA1BE19414A720029F589 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17D19414A720029F589 /* Clock.swift */; };
@@ -66,6 +66,97 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		0915B7C31D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B0365A1C5E836B001EA5B7;
+			remoteInfo = "DipUI-OSX";
+		};
+		0915B7C51D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B036631C5E836B001EA5B7;
+			remoteInfo = "DipUI-OSXTests";
+		};
+		0915B7C71D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B0360E1C5E8028001EA5B7;
+			remoteInfo = "DipUI-iOS";
+		};
+		0915B7C91D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B036181C5E8029001EA5B7;
+			remoteInfo = "DipUI-iOSTests";
+		};
+		0915B7CB1D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B0363E1C5E8358001EA5B7;
+			remoteInfo = "DipUI-tvOS";
+		};
+		0915B7CD1D566D54004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 09B036471C5E8358001EA5B7;
+			remoteInfo = "DipUI-tvOSTests";
+		};
+		0915B7D91D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3581C161543002241C1;
+			remoteInfo = "Dip-OSX";
+		};
+		0915B7DB1D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3611C161543002241C1;
+			remoteInfo = "Dip-OSXTests";
+		};
+		0915B7DD1D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3781C1615EC002241C1;
+			remoteInfo = "Dip-iOS";
+		};
+		0915B7DF1D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3811C1615EC002241C1;
+			remoteInfo = "Dip-iOSTests";
+		};
+		0915B7E11D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3A61C1618AF002241C1;
+			remoteInfo = "Dip-tvOS";
+		};
+		0915B7E31D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B3AF1C1618AF002241C1;
+			remoteInfo = "Dip-tvOSTests";
+		};
+		0915B7E51D566D66004A71E7 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 0903B4041C162862002241C1;
+			remoteInfo = "Dip-watchOS";
+		};
 		261FA1611941497E0029F589 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 261FA1461941497E0029F589 /* Project object */;
@@ -76,8 +167,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0932294F1D403543004C0A98 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
-		093229501D403543004C0A98 /* DipUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = DipUI.framework; path = Carthage/Build/iOS/DipUI.framework; sourceTree = "<group>"; };
+		0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = DipUI.xcodeproj; path = "Carthage/Checkouts/Dip-UI/DipUI/DipUI.xcodeproj"; sourceTree = "<group>"; };
+		0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = Dip.xcodeproj; path = Carthage/Checkouts/Dip/Dip/Dip.xcodeproj; sourceTree = "<group>"; };
 		261FA14E1941497E0029F589 /* VIPER-SWIFT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VIPER-SWIFT.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1601941497E0029F589 /* VIPER-SWIFTTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VIPER-SWIFTTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		261FA1651941497E0029F589 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -127,8 +218,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				093229521D403543004C0A98 /* DipUI.framework in Frameworks */,
-				093229511D403543004C0A98 /* Dip.framework in Frameworks */,
+				0915B7E71D566D87004A71E7 /* Dip.framework in Frameworks */,
+				0915B7E81D566D87004A71E7 /* DipUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -142,11 +233,38 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0915B7BB1D566D54004A71E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0915B7C41D566D54004A71E7 /* DipUI.framework */,
+				0915B7C61D566D54004A71E7 /* DipUI-OSXTests.xctest */,
+				0915B7C81D566D54004A71E7 /* DipUI.framework */,
+				0915B7CA1D566D54004A71E7 /* DipUI-iOSTests.xctest */,
+				0915B7CC1D566D54004A71E7 /* DipUI.framework */,
+				0915B7CE1D566D54004A71E7 /* DipUI-tvOSTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		0915B7D01D566D66004A71E7 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				0915B7DA1D566D66004A71E7 /* Dip.framework */,
+				0915B7DC1D566D66004A71E7 /* Dip-OSXTests.xctest */,
+				0915B7DE1D566D66004A71E7 /* Dip.framework */,
+				0915B7E01D566D66004A71E7 /* Dip-iOSTests.xctest */,
+				0915B7E21D566D66004A71E7 /* Dip.framework */,
+				0915B7E41D566D66004A71E7 /* Dip-tvOSTests.xctest */,
+				0915B7E61D566D66004A71E7 /* Dip.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		261FA1451941497E0029F589 = {
 			isa = PBXGroup;
 			children = (
-				0932294F1D403543004C0A98 /* Dip.framework */,
-				093229501D403543004C0A98 /* DipUI.framework */,
+				0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */,
+				0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */,
 				261FA1501941497E0029F589 /* VIPER-SWIFT */,
 				261FA1631941497E0029F589 /* VIPER-SWIFTTests */,
 				261FA14F1941497E0029F589 /* Products */,
@@ -483,7 +601,6 @@
 				261FA14A1941497E0029F589 /* Sources */,
 				261FA14B1941497E0029F589 /* Frameworks */,
 				261FA14C1941497E0029F589 /* Resources */,
-				09DD59FE1CE73D2B000FE79F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -525,6 +642,7 @@
 				TargetAttributes = {
 					261FA14D1941497E0029F589 = {
 						CreatedOnToolsVersion = 6.0;
+						DevelopmentTeam = 9WRV24YCYY;
 					};
 					261FA15F1941497E0029F589 = {
 						CreatedOnToolsVersion = 6.0;
@@ -543,6 +661,16 @@
 			mainGroup = 261FA1451941497E0029F589;
 			productRefGroup = 261FA14F1941497E0029F589 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 0915B7D01D566D66004A71E7 /* Products */;
+					ProjectRef = 0915B7CF1D566D66004A71E7 /* Dip.xcodeproj */;
+				},
+				{
+					ProductGroup = 0915B7BB1D566D54004A71E7 /* Products */;
+					ProjectRef = 0915B7BA1D566D54004A71E7 /* DipUI.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				261FA14D1941497E0029F589 /* VIPER-SWIFT */,
@@ -550,6 +678,100 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		0915B7C41D566D54004A71E7 /* DipUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DipUI.framework;
+			remoteRef = 0915B7C31D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7C61D566D54004A71E7 /* DipUI-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DipUI-OSXTests.xctest";
+			remoteRef = 0915B7C51D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7C81D566D54004A71E7 /* DipUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DipUI.framework;
+			remoteRef = 0915B7C71D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7CA1D566D54004A71E7 /* DipUI-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DipUI-iOSTests.xctest";
+			remoteRef = 0915B7C91D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7CC1D566D54004A71E7 /* DipUI.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = DipUI.framework;
+			remoteRef = 0915B7CB1D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7CE1D566D54004A71E7 /* DipUI-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "DipUI-tvOSTests.xctest";
+			remoteRef = 0915B7CD1D566D54004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7DA1D566D66004A71E7 /* Dip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dip.framework;
+			remoteRef = 0915B7D91D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7DC1D566D66004A71E7 /* Dip-OSXTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Dip-OSXTests.xctest";
+			remoteRef = 0915B7DB1D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7DE1D566D66004A71E7 /* Dip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dip.framework;
+			remoteRef = 0915B7DD1D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7E01D566D66004A71E7 /* Dip-iOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Dip-iOSTests.xctest";
+			remoteRef = 0915B7DF1D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7E21D566D66004A71E7 /* Dip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dip.framework;
+			remoteRef = 0915B7E11D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7E41D566D66004A71E7 /* Dip-tvOSTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = "Dip-tvOSTests.xctest";
+			remoteRef = 0915B7E31D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		0915B7E61D566D66004A71E7 /* Dip.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = Dip.framework;
+			remoteRef = 0915B7E51D566D66004A71E7 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		261FA14C1941497E0029F589 /* Resources */ = {
@@ -571,24 +793,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		09DD59FE1CE73D2B000FE79F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/DipUI.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		261FA14A1941497E0029F589 /* Sources */ = {
@@ -717,6 +921,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -751,6 +956,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 3.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -760,6 +966,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 9WRV24YCYY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -767,7 +974,7 @@
 				INFOPLIST_FILE = "VIPER-SWIFT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mutualmobile.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.puchka.VIPER-SWIFT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -777,6 +984,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				DEVELOPMENT_TEAM = 9WRV24YCYY;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
@@ -784,7 +992,7 @@
 				INFOPLIST_FILE = "VIPER-SWIFT/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "com.mutualmobile.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.puchka.VIPER-SWIFT";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

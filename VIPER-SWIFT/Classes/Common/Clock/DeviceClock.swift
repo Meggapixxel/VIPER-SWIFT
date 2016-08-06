@@ -16,7 +16,7 @@ class DeviceClock : NSObject, Clock {
         print("deinit \(self.dynamicType)")
     }
 
-    func today() -> NSDate {
-        return NSDate()
+    func today() -> Date {
+        return Date()
     }
 }

@@ -10,8 +10,8 @@ import Foundation
 import CoreData
 
 protocol DataStore {
-    func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!)
-    func newTodoItem(entiry: TodoItem)
+    func fetchEntriesWithPredicate(_ predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!)
+    func newTodoItem(_ entiry: TodoItem)
     func save()
 }
 
@@ -22,21 +22,21 @@ class CoreDataStore : NSObject, DataStore {
     
     override init() {
         print("creating \(self.dynamicType)")
-        managedObjectModel = NSManagedObjectModel.mergedModelFromBundles(nil)
+        managedObjectModel = NSManagedObjectModel.mergedModel(from: nil)
         
         persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
         
-        let domains = NSSearchPathDomainMask.UserDomainMask
-        let directory = NSSearchPathDirectory.DocumentDirectory
+        let domains = FileManager.SearchPathDomainMask.userDomainMask
+        let directory = FileManager.SearchPathDirectory.documentDirectory
 
-        let applicationDocumentsDirectory = NSFileManager.defaultManager().URLsForDirectory(directory, inDomains: domains).first!
+        let applicationDocumentsDirectory = FileManager.default.urls(for: directory, in: domains).first!
         let options = [NSMigratePersistentStoresAutomaticallyOption : true, NSInferMappingModelAutomaticallyOption : true]
         
-        let storeURL = applicationDocumentsDirectory.URLByAppendingPathComponent("VIPER-SWIFT.sqlite")
+        let storeURL = applicationDocumentsDirectory.appendingPathComponent("VIPER-SWIFT.sqlite")
         
-        try! persistentStoreCoordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: "", URL: storeURL, options: options)
+        try! persistentStoreCoordinator.addPersistentStore(ofType: NSSQLiteStoreType, configurationName: "", at: storeURL, options: options)
 
-        managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.MainQueueConcurrencyType)
+        managedObjectContext = NSManagedObjectContext(concurrencyType: NSManagedObjectContextConcurrencyType.mainQueueConcurrencyType)
         managedObjectContext.persistentStoreCoordinator = persistentStoreCoordinator
         managedObjectContext.undoManager = nil
         
@@ -47,20 +47,20 @@ class CoreDataStore : NSObject, DataStore {
     }
 
     
-    func fetchEntriesWithPredicate(predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!) {
-        let fetchRequest = NSFetchRequest(entityName: "TodoItem")
+    func fetchEntriesWithPredicate(_ predicate: NSPredicate, sortDescriptors: [NSSortDescriptor], completionBlock: (([TodoItem]) -> Void)!) {
+        let fetchRequest = NSFetchRequest<ManagedTodoItem>(entityName: "TodoItem")
         fetchRequest.predicate = predicate
         fetchRequest.sortDescriptors = sortDescriptors
         
-        managedObjectContext.performBlock {
-            let queryResults = try? self.managedObjectContext.executeFetchRequest(fetchRequest)
-            let managedResults = queryResults! as! [ManagedTodoItem]
+        managedObjectContext.perform {
+            let queryResults = try? self.managedObjectContext.fetch(fetchRequest)
+            let managedResults = queryResults!
             completionBlock(managedResults.map(self.todoItemFromDataStoreEntry))
         }
     }
     
-    func newTodoItem(entry: TodoItem) {
-        let newEntry = NSEntityDescription.insertNewObjectForEntityForName("TodoItem", inManagedObjectContext: managedObjectContext) as! ManagedTodoItem
+    func newTodoItem(_ entry: TodoItem) {
+        let newEntry = NSEntityDescription.insertNewObject(forEntityName: "TodoItem", into: managedObjectContext) as! ManagedTodoItem
         newEntry.name = entry.name
         newEntry.date = entry.dueDate
     }
@@ -72,7 +72,7 @@ class CoreDataStore : NSObject, DataStore {
         }
     }
     
-    func todoItemFromDataStoreEntry(entry: ManagedTodoItem) -> TodoItem {
+    func todoItemFromDataStoreEntry(_ entry: ManagedTodoItem) -> TodoItem {
         return TodoItem(dueDate: entry.date, name: entry.name as String)
     }
     

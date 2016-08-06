@@ -17,7 +17,7 @@ class ListPresenter : NSObject {
 
 extension ListPresenter: ListInteractorOutput {
 
-    func foundUpcomingItems(upcomingItems: [UpcomingItem]) {
+    func foundUpcomingItems(_ upcomingItems: [UpcomingItem]) {
         if upcomingItems.count == 0 {
             userInterface?.showNoContentMessage()
         } else {
@@ -25,12 +25,12 @@ extension ListPresenter: ListInteractorOutput {
         }
     }
     
-    func updateUserInterfaceWithUpcomingItems(upcomingItems: [UpcomingItem]) {
+    func updateUserInterfaceWithUpcomingItems(_ upcomingItems: [UpcomingItem]) {
         let upcomingDisplayData = upcomingDisplayDataWithItems(upcomingItems)
         userInterface?.showUpcomingDisplayData(upcomingDisplayData)
     }
     
-    func upcomingDisplayDataWithItems(upcomingItems: [UpcomingItem]) -> UpcomingDisplayData {
+    func upcomingDisplayDataWithItems(_ upcomingItems: [UpcomingItem]) -> UpcomingDisplayData {
         let collection = UpcomingDisplayDataCollection()
         collection.addUpcomingItems(upcomingItems)
         return collection.collectedDisplayData()
