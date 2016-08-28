@@ -53,12 +53,6 @@ class AddViewController: UIViewController, UITextFieldDelegate, AddViewInterface
         nameTextField!.resignFirstResponder()
     }
     
-    
-    override func dismiss(animated flag: Bool, completion: (() -> Void)? = nil) {
-        eventHandler?.cancelAddAction()
-        super.dismiss(animated: flag, completion: completion)
-    }
-    
     func setEntryName(_ name: String) {
         nameTextField!.text = name
     }

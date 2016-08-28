@@ -15,7 +15,7 @@ class AddDismissalTransition : NSObject, UIViewControllerAnimatedTransitioning {
     }
 
     func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
-        let fromVC = transitionContext.viewController(forKey: UITransitionContextFromViewControllerKey) as! AddViewController
+        let fromVC = transitionContext.viewController(forKey: UITransitionContextViewControllerKey.from) as! AddViewController
         
         let finalCenter = CGPoint(x: 160.0, y: (fromVC.view.bounds.size.height / 2) - 1000.0)
         

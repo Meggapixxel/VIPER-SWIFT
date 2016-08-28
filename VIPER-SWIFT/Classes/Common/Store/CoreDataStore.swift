@@ -21,7 +21,7 @@ class CoreDataStore : NSObject, DataStore {
     var managedObjectContext : NSManagedObjectContext!
     
     override init() {
-        print("creating \(self.dynamicType)")
+        print("creating \(type(of: self))")
         managedObjectModel = NSManagedObjectModel.mergedModel(from: nil)
         
         persistentStoreCoordinator = NSPersistentStoreCoordinator(managedObjectModel: managedObjectModel)
@@ -43,7 +43,7 @@ class CoreDataStore : NSObject, DataStore {
         super.init()
     }
     deinit {
-        print("deinit \(self.dynamicType)")
+        print("deinit \(type(of: self))")
     }
 
     

@@ -10,10 +10,10 @@ import Foundation
 
 class DeviceClock : NSObject, Clock {
     override init() {
-        print("creating \(self.dynamicType)")
+        print("creating \(type(of: self))")
     }
     deinit {
-        print("deinit \(self.dynamicType)")
+        print("deinit \(type(of: self))")
     }
 
     func today() -> Date {

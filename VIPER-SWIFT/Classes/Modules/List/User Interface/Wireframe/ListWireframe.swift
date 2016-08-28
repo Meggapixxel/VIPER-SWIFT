@@ -26,7 +26,7 @@ class ListWireframe : NSObject, Router {
         listViewController?.performSegue(withIdentifier: "add", sender: nil)
     }
     
-    func prepareForSegue(_ segue: UIStoryboardSegue, sender: AnyObject?) {
+    func prepareForSegue(_ segue: UIStoryboardSegue, sender: Any?) {
         let _ = addWireframe?.prepareForSegue(segue)
     }
     
