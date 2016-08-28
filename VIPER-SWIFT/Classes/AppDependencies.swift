@@ -38,7 +38,7 @@ func configureContainer(container rootContainer: DependencyContainer) {
 let listModule = DependencyContainer() { container in
     //This is an example of auto-wiring - container will resolve factory arguments by itself
     let listWireframe = container.register(.WeakSingleton) { ListWireframe(listPresenter: $0)}
-        .resolveDependencies { container, wireframe in
+        .resolvingProperties { container, wireframe in
             //resolveDependencies block is usually used to resolve dependencies with property injection
             
             //As you will see below we register controller with a tag, so we have to use it
@@ -50,7 +50,7 @@ let listModule = DependencyContainer() { container in
 
     //Alternatively we can explicitly resolve factory arguments
     //DataStore will be resolved from root container through containers collaboration
-    container.register(.ObjectGraph) {
+    container.register(.Shared) {
         try ListDataManager(
             //you can explicitly specify type to resolve instead of letting compiler to infer it
             dataStore: container.resolve() as CoreDataStore
@@ -59,8 +59,8 @@ let listModule = DependencyContainer() { container in
 
     //Another example of auto-wiring definition but with passing initializer as a factory 
     //instead of calling it in closure
-    let interactor = container.register(.ObjectGraph, factory: ListInteractor.init)
-        .resolveDependencies { container, interactor in
+    let interactor = container.register(.Shared, factory: ListInteractor.init)
+        .resolvingProperties { container, interactor in
             //While developing it is usefull to catch exceptions if something fails to resolve
             //For that use `try!` when calling container `resolve` method.
             //Otherwise the error will be just logged in the debugger.
@@ -70,8 +70,8 @@ let listModule = DependencyContainer() { container in
     //will be used to resolve `ListInteractorInput` type.
     container.register(interactor, type: ListInteractorInput.self)
 
-    let presenter = container.register(.ObjectGraph, factory: ListPresenter.init)
-        .resolveDependencies { container, presenter in
+    let presenter = container.register(.Shared, factory: ListPresenter.init)
+        .resolvingProperties { container, presenter in
             presenter.listInteractor = try container.resolve()
             
             //This is an example of circular dependencies:
@@ -92,8 +92,8 @@ let listModule = DependencyContainer() { container in
     //This is an example of registering controller created from a storyboard.
     //For such controllers use the same tag as dipTag property (or nil) to register them.
     //Provided factory will be not called as controller is already instantiated from a storyboard.
-    let controller = container.register(tag: ListViewControllerIdentifier, .ObjectGraph) { ListViewController() }
-        .resolveDependencies { container, controller in
+    let controller = container.register(.Shared, tag: ListViewControllerIdentifier) { ListViewController() }
+        .resolvingProperties { container, controller in
             //to use tag "ListViewController" to resolve dependencies graph we can use `container.context.tag`
             //but we don't do that because then list module will resolve one instance of AddWireframe
             //and then add module will resolve another instance of it instead of reusing the same instance
@@ -113,27 +113,27 @@ let addModule = DependencyContainer() { container in
     //AddWireframe is registered as Singleton to make it reusable between collaborating containers
     container.register(.WeakSingleton, factory: AddWireframe.init)
     
-    container.register(.ObjectGraph) {
+    container.register(.Shared) {
         try AddDataManager(
             //You can use weakly-typed methods to resolve components
             dataStore: container.resolve(CoreDataStore.self) as! DataStore
         )
     }
-    container.register(.ObjectGraph, factory: AddInteractor.init)
+    container.register(.Shared, factory: AddInteractor.init)
     
     //AddPresenter makes extensive use of auto-injection to inject its dependencies with property injection.
     //We use Singleton scope for presenter because it will be first resolved by list module
     //when resolving ListWireframe that has dependency on AddWireframe that in turn depends on AddPresenter.
-    //ObjectGraph scope reuses instances only while resolving single object graph,
+    //Unique scope reuses instances only while resolving single object graph,
     //in other words until the outermost call to `resolve` method returns.
     //When AddViewController is created later at runtime add module object graph will be resolved.
-    //Because of that ObjectGraph scope will produce new AddPresenter (and it's dependencies)
+    //Because of that Unique scope will produce new AddPresenter (and it's dependencies)
     //With Singleton scope already created instance will be reused.
     let presenter = container.register(.WeakSingleton, factory: AddPresenter.init)
     container.register(presenter, type: AddModuleInterface.self)
 
     //To register controller with nil tag set dipTag in storyboard as Nil instead of String
-    container.register(.ObjectGraph) { AddViewController() }
+    container.register(.Shared) { AddViewController() }
 }
 
 extension AddViewController: StoryboardInstantiatable { }
