@@ -37,7 +37,7 @@ func configureContainer(container rootContainer: DependencyContainer) {
 //MARK: List module
 let listModule = DependencyContainer() { container in
     //This is an example of auto-wiring - container will resolve factory arguments by itself
-    let listWireframe = container.register(.WeakSingleton) { ListWireframe(listPresenter: $0)}
+    let listWireframe = container.register(.WeakSingleton) { ListWireframe(listPresenter: $0) }
         .resolvingProperties { container, wireframe in
             //resolveDependencies block is usually used to resolve dependencies with property injection
             
@@ -60,15 +60,15 @@ let listModule = DependencyContainer() { container in
     //Another example of auto-wiring definition but with passing initializer as a factory 
     //instead of calling it in closure
     let interactor = container.register(.Shared, factory: ListInteractor.init)
+        //This is an example of type-forwarding. Previous definition (and thus instance resolved using it)
+        //will be used to resolve `ListInteractorInput` type.
+        .implements(ListInteractorInput.self)
         .resolvingProperties { container, interactor in
             //While developing it is usefull to catch exceptions if something fails to resolve
             //For that use `try!` when calling container `resolve` method.
             //Otherwise the error will be just logged in the debugger.
             interactor.output = try! container.resolve()
     }
-    //This is an example of type-forwarding. Previous definition (and thus instance resolved using it)
-    //will be used to resolve `ListInteractorInput` type.
-    container.register(interactor, type: ListInteractorInput.self)
 
     let presenter = container.register(.Shared, factory: ListPresenter.init)
         .resolvingProperties { container, presenter in
@@ -82,7 +82,7 @@ let listModule = DependencyContainer() { container in
             presenter.listWireframe = try container.resolve()
             presenter.userInterface = try container.resolve(tag: ListViewControllerIdentifier)
     }
-    //Another examples of type-forwarding
+    //Another examples of type-forwarding.
     container.register(presenter, type: ListInteractorOutput.self)
     container.register(presenter, type: ListModuleInterface.self)
     
@@ -110,8 +110,14 @@ extension ListViewController: StoryboardInstantiatable { }
 
 //MARK: Add module
 let addModule = DependencyContainer() { container in
-    //AddWireframe is registered as Singleton to make it reusable between collaborating containers
-    container.register(.WeakSingleton, factory: AddWireframe.init)
+    //AddWireframe is registered as Singleton to make it reusable between collaborating containers.
+    //Shared instances are also reused, but Singleton makes them to be reused across different graphs.
+    //We can also use WeakSingleton so when the last strong reference to the instance is release 
+    //next instance will be created from scratch. That is usefull for cases when you have to reset
+    //some components and create them based on a new application state.
+    //For example when user logs in or logs out you may recreate the whole app graph
+    //simply by resolving new instance of root wireframe.
+    container.register(.Singleton, factory: AddWireframe.init)
     
     container.register(.Shared) {
         try AddDataManager(
@@ -121,7 +127,6 @@ let addModule = DependencyContainer() { container in
     }
     container.register(.Shared, factory: AddInteractor.init)
     
-    //AddPresenter makes extensive use of auto-injection to inject its dependencies with property injection.
     //We use Singleton scope for presenter because it will be first resolved by list module
     //when resolving ListWireframe that has dependency on AddWireframe that in turn depends on AddPresenter.
     //Shared scope reuses instances only while resolving single object graph,
@@ -129,7 +134,8 @@ let addModule = DependencyContainer() { container in
     //When AddViewController is created later at runtime add module object graph will be resolved.
     //Because of that Shared scope will produce new AddPresenter (and it's dependencies)
     //With Singleton scope already created instance will be reused.
-    let presenter = container.register(.WeakSingleton, factory: AddPresenter.init)
+    //AddPresenter also makes extensive use of auto-injection to inject its dependencies with property injection.
+    let presenter = container.register(.Singleton, factory: AddPresenter.init)
     container.register(presenter, type: AddModuleInterface.self)
 
     //To register controller with nil tag set dipTag in storyboard as Nil instead of String

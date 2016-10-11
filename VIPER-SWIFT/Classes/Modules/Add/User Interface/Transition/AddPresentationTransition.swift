@@ -22,10 +22,9 @@ class AddPresentationTransition: NSObject, UIViewControllerAnimatedTransitioning
         toVC.transitioningBackgroundView.alpha = 0.0
         toVC.transitioningBackgroundView.frame = UIScreen.mainScreen().bounds
         
-        if let containerView = transitionContext.containerView() {
-            containerView.addSubview(toVC.transitioningBackgroundView)
-            containerView.addSubview(toVC.view)
-        }
+        let containerView = transitionContext.containerView()
+        containerView.addSubview(toVC.transitioningBackgroundView)
+        containerView.addSubview(toVC.view)
         
         let toViewFrame = CGRectMake(0, 0, 260, 300)
         toVC.view.frame = toViewFrame
