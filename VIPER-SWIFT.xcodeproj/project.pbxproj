@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		093229511D403543004C0A98 /* Dip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0932294F1D403543004C0A98 /* Dip.framework */; };
 		093229521D403543004C0A98 /* DipUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 093229501D403543004C0A98 /* DipUI.framework */; };
+		09FC483A1DAD843100566AA8 /* Dip.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 0932294F1D403543004C0A98 /* Dip.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		09FC483B1DAD843100566AA8 /* DipUI.framework in CopyFiles */ = {isa = PBXBuildFile; fileRef = 093229501D403543004C0A98 /* DipUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		261FA1B919414A720029F589 /* AppDependencies.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17219414A720029F589 /* AppDependencies.swift */; };
 		261FA1BC19414A720029F589 /* NSCalendar+CalendarAdditions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17919414A720029F589 /* NSCalendar+CalendarAdditions.swift */; };
 		261FA1BE19414A720029F589 /* Clock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 261FA17D19414A720029F589 /* Clock.swift */; };
@@ -74,6 +76,20 @@
 			remoteInfo = "VIPER-SWIFT";
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		09FC48391DAD842A00566AA8 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				09FC483A1DAD843100566AA8 /* Dip.framework in CopyFiles */,
+				09FC483B1DAD843100566AA8 /* DipUI.framework in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		0932294F1D403543004C0A98 /* Dip.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Dip.framework; path = Carthage/Build/iOS/Dip.framework; sourceTree = "<group>"; };
@@ -483,7 +499,7 @@
 				261FA14A1941497E0029F589 /* Sources */,
 				261FA14B1941497E0029F589 /* Frameworks */,
 				261FA14C1941497E0029F589 /* Resources */,
-				09DD59FE1CE73D2B000FE79F /* ShellScript */,
+				09FC48391DAD842A00566AA8 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -571,24 +587,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		09DD59FE1CE73D2B000FE79F /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"$(SRCROOT)/Carthage/Build/iOS/DipUI.framework",
-				"$(SRCROOT)/Carthage/Build/iOS/Dip.framework",
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "/usr/local/bin/carthage copy-frameworks";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		261FA14A1941497E0029F589 /* Sources */ = {
@@ -717,6 +715,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 			};
 			name = Debug;
 		};
@@ -751,6 +750,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				METAL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
+				SWIFT_VERSION = 2.3;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
