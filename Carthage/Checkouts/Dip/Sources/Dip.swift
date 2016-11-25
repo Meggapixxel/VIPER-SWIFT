@@ -188,7 +188,7 @@ extension DependencyContainer {
     }
     
     public var description: String {
-      let resolvingDescription = "Resolving type \(key.type) with arguments \(key.typeOfArguments) tagged with \(key.tag.desc)"
+      let resolvingDescription = "Resolving type \(key.type) with arguments \(key.typeOfArguments) \(key.tag != nil ? "tagged with \(key.tag!)" : "")"
       if injectedInProperty != nil {
         return "\(resolvingDescription) while auto-injecting property \(injectedInProperty.desc) of \(injectedInType.desc)"
       }

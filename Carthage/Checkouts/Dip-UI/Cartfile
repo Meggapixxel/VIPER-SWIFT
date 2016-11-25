@@ -1,2 +1,2 @@
-github "AliSoftware/Dip" "feature/swift-compatibility" 
+github "AliSoftware/Dip" ~> 5.0 
 

@@ -28,12 +28,13 @@ extension DependencyContainer {
   ///Containers that will be used to resolve dependencies of instances, created by stroyboards.
   static public var uiContainers: [DependencyContainer] = []
   
+  #if swift(>=3.0)
   /**
    Resolves dependencies of passed in instance.
    Use this method to resolve dependencies of object created by storyboard.
    The type of the instance should be registered in the container.
    
-   You should call this method only from implementation of `didInstantiateFromStoryboard(uiContainer:tag:)` 
+   You should call this method only from implementation of `didInstantiateFromStoryboard(_:tag:)`
    of `StoryboardInstantiatable` protocol if you override its default implementation.
    
    This method will do the same as `resolve(tag:) as T`, but instead of creating 
@@ -49,7 +50,7 @@ extension DependencyContainer {
    class ViewController: UIViewController, ServiceDelegate, StoryboardInstantiatable {
      var service: Service?
 
-     func didInstantiateFromStoryboard(uiContainer container: DependencyContainer, tag: DependencyContainer.Tag?) throws {
+     func didInstantiateFromStoryboard(_ container: DependencyContainer, tag: DependencyContainer.Tag?) throws {
        try container.resolveDependencies(of: self as ServiceDelegate, tag: "vc")
      }
    }
@@ -67,17 +68,58 @@ extension DependencyContainer {
    container.register { ServiceImp() as Service }
    ```
    
-   - seealso: `register(_:type:tag:factory:)`, `didInstantiateFromStoryboard(uiContainer:tag:)`
+   - seealso: `register(_:type:tag:factory:)`, `didInstantiateFromStoryboard(_:tag:)`
    
    */
   public func resolveDependencies<T>(of instance: T, tag: Tag? = nil) throws {
     _ = try resolve(tag: tag) { (_: () throws -> T) in instance }
   }
+  #else
   
-  #if !swift(>=3.0)
-  @available(*, deprecated=1.0.2, message="Use resolveDependencies(of:tag:) instead.")
+  /**
+   Resolves dependencies of passed in instance.
+   Use this method to resolve dependencies of object created by storyboard.
+   The type of the instance should be registered in the container.
+   
+   You should call this method only from implementation of `didInstantiateFromStoryboard(_:tag:)`
+   of `StoryboardInstantiatable` protocol if you override its default implementation.
+   
+   This method will do the same as `resolve(tag:) as T`, but instead of creating
+   a new intance with a registered factory it will use passed in instance as a resolved instance.
+   
+   - parameters:
+      - instance: The object which dependencies should be resolved
+      - tag: An optional tag used to register the type (`T`) in the container
+   
+   **Example**:
+   
+   ```swift
+   class ViewController: UIViewController, ServiceDelegate, StoryboardInstantiatable {
+     var service: Service?
+     
+     func didInstantiateFromStoryboard(container: DependencyContainer, tag: DependencyContainer.Tag?) throws {
+       try container.resolveDependenciesOf(self as ServiceDelegate, tag: "vc")
+     }
+   }
+   
+   class ServiceImp: Service {
+     weak var delegate: ServiceDelegate?
+   }
+   
+   container.register(tag: "vc") { ViewController() }
+     .resolvingProperties { container, controller in
+       controller.service = try container.resolve() as Service
+       controller.service.delegate = controller
+   }
+   
+   container.register { ServiceImp() as Service }
+   ```
+   
+   - seealso: `register(_:type:tag:factory:)`, `didInstantiateFromStoryboard(_:tag:)`
+   
+   */
   public func resolveDependenciesOf<T>(instance: T, tag: Tag? = nil) throws {
-    try resolveDependencies(of: instance, tag: tag)
+    _ = try resolve(tag: tag) { (_: () throws -> T) in instance }
   }
   #endif
 }

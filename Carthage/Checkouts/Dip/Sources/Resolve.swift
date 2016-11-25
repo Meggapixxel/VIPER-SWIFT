@@ -250,7 +250,8 @@ class ResolvedInstances {
         return singletons[key]
       }
       if scope == .weakSingleton {
-        return (weakSingletons[key] as? WeakBoxType)?.unboxed ?? weakSingletons[key]
+        if let boxed = weakSingletons[key] as? WeakBoxType { return boxed.unboxed }
+        else { return weakSingletons[key] }
       }
       if scope == .shared {
         return resolvedInstances[key]

@@ -1,1 +1,1 @@
-github "AliSoftware/Dip-UI" "feature/swift-compatibility"
+github "AliSoftware/Dip-UI" ~> 1.0 
